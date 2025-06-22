@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BGSI Macro UI</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="container">
+  <div class="macrotitle">
+        <img src="../images/Other/Bubble_Gum.webp"
+        style="width: 20px; height: 20px; margin-bottom: 3px; vertical-align: middle;">
+        BGSI Macro
+  </div>
+  <div class="window-controls" onclick="ahk.Dragger.Func(this)">
+    <button class="minimizeButton" onclick="ahk.global.WinMinimize('A')">_</button>
+    <button class="closeButton" onclick="ahk.global.WinClose('A')">x</button>
+  </div>
+    <div class="tabs">
+      <button onclick="switchTab('main')" aria-label="Main tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-house-icon lucide-house">
+          <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+          <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        </svg>
+        Main
+      </button>
+
+      <button onclick="switchTab('rewards')" aria-label="Rewards tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-gift-icon lucide-gift">
+          <rect x="3" y="8" width="18" height="4" rx="1"/>
+          <path d="M12 8v13"/>
+          <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
+          <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>
+        </svg>
+        Rewards
+      </button>
+
+      <button onclick="switchTab('mode')" aria-label="Mode tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-arrow-up-down-icon lucide-arrow-up-down">
+          <path d="m21 16-4 4-4-4"/>
+          <path d="M17 20V4"/>
+          <path d="m3 8 4-4 4 4"/>
+          <path d="M7 4v16"/>
+        </svg>
+        Mode
+      </button>
+
+      <button onclick="switchTab('macros')" aria-label="Macros tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-bot-icon lucide-bot">
+          <path d="M12 8V4H8"/>
+          <rect width="16" height="12" x="4" y="8" rx="2"/>
+          <path d="M2 14h2"/>
+          <path d="M20 14h2"/>
+          <path d="M15 13v2"/>
+          <path d="M9 13v2"/>
+        </svg>
+        Macros
+      </button>
+
+      <button onclick="switchTab('competitive')" aria-label="Competitive tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-trophy-icon lucide-trophy">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+          <path d="M4 22h16"/>
+          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+        </svg>
+        Competitive
+      </button>
+    </div>
+
+    <div id="main" class="tab active">
+      <label>Webhook URL:</label>
+      <input type="text" id="url" placeholder="https://discord.com/api/webhooks/WebhookHere">
+
+      <label>Discord ID:</label>
+      <input type="text" id="discordID" placeholder="1234567890">
+
+      <label>Private Link:</label>
+      <input type="text" id="vipLink" placeholder="https://www.roblox.com/games/85896571713843/Bubble-Gum-Simulator-INFINITY?privateServerLinkCode=58905906412733149925971314175521">
+
+      <div class="donate-section">
+        <div class="credits">
+          <span>Macro By: _epic. <br> UI Helper: PizzaKing29</span>
+          <div class="donation-container">
+            <div style="display: flex; justify-self: flex-end;">Donate!</div>
+            <img class="donate-btn" onclick="ahk.global.run('https://www.roblox.com/games/3780570380/Donation-area#!/store')" src="../images/Other/Coins.png" alt="Donation">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="rewards" class="tab">  
+      <div class="rewards-grid">
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/Giant_Chest_Icon.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Giant Chest</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="GiantChest">Claim</label>
+          </div>
+        </div>
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/Infinity_Chest_Icon.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Infinity Chest</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="InfinityChest">Claim</label>
+          </div>
+        </div>
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/Void_Chest_Icon.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Void Chest</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="VoidChest">Claim</label>
+          </div>
+        </div>
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/TicketChest.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Ticket Chest</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="TicketChest">Claim</label>
+          </div>
+        </div>
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/Playtime_Icon.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Playtime Rewards</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="Presents">Claim</label>
+          </div>
+        </div>
+        
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Other/Bubble_Pass_Icon.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Season Quests</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="SeasonQuests" >Quests</label>
+          </div>
+        </div>
+        
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/Shops_Mastery.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Alien Shop</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="AlienShop">Buy Items</label>
+            <label><input type="radio" name="shops" value="AlienShop">Use reroll</label>
+          </div>
+        </div>
+
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/Blackmarket_Icon.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Black Market</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="BlackMarket">Buy Items</label>
+            <label><input type="radio" name="shops" value="BlackMarket">Use reroll</label>
+          </div>
+        </div>
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/Minigame_Paradise_Icon.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Dice Merchant</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="DiceMerchant">Buy Items</label>
+            <label><input type="radio" name="shops" value="DiceMerchant">Use reroll</label>
+          </div>
+        </div>
+
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Chests & Shop/Bruh.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Traveling Merchant</span>
+          </div>
+
+          <div class="reward-options">
+            <label><input type="checkbox" id="TravelingMerchant">Buy Items</label>
+            <label><input type="radio" name="shops" value="TravelingMerchant">Use reroll</label>
+          </div>
+
+        </div>
+
+
+        <div class="reward-box">
+          <div class="reward-header">
+            <img src="../images/Other/Gem_Genie.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+            <span>Gem Genie</span>
+          </div>
+          <div class="reward-options">
+            <label><input type="checkbox" id="GemGenie" >Quests</label>
+            <label><input type="checkbox" id="RerollGemGenie" >Reroll Until 
+              <img src="../images/Other/Infinity_Elixir.webp" style="width: 25px; height: 25px; margin-right: 3px; vertical-align: middle;">
+            
+            </label>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+
+  <div id="mode" class="tab">
+      <div class="mode-section">
+        <h3>Macro Settings</h3>
+        <div class="mode-box selector">
+          <div class="selector-container">
+            <label class="radio-option"><input type="radio" name="macro" value="dropdownSelect" id="pickBubbleRadio">Blow Bubbles:</label>
+            <div class="custom-dropdown">
+              <div class="custom-dropdown-selected" data-value="bubbles">
+                <img src="../images/Other/Twilight_Icon.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Twilight
+                </div>
+              <div class="custom-dropdown-options">
+                <div data-value="Twilight">
+                  <img src="../images/Other/Twilight_Icon.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Twilight
+                </div>
+                <div data-value="RobotFactory">
+                  <img src="../images/Other/Robot_Factory_Icon.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Robot Factory
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="hiddenSelector" data-value="bubbles" value="Twilight">
+        </div>
+
+        <div class="mode-box">
+          <label class="radio-option"><input type="radio" name="macro" value="CoinCurrency">
+            <img src="../images/Other/Zen_Icon.png" style="width: 6%; margin-right: 1%; margin-top: 1%;">Farm Coins & Gems
+          </label>
+        </div>
+        <div class="mode-box">
+          <label class="radio-option"><input type="radio" name="macro" value="TicketCurrency">
+            <img src="../images/Other/Hyperwave_Island_Icon.png" style="width: 6%; margin-right: 1%; margin-top: 1%;">Farm Tickets
+          </label>
+        </div>
+
+        <div class="mode-box">
+          <label class="radio-option"><input type="radio" name="macro" value="RealInfinity">
+            <img src="../images/Eggs/Overworld/Infinity_Egg.webp" style="width: 4%; margin-right: 1%; margin-top: 1%;">
+            Infinity Egg (Overworld & Minigame Paradise)
+          </label>
+        </div>
+        
+        
+        <div class="mode-box selector">
+          <div class="selector-container">
+
+            <label class="radio-option"><input type="radio" name="macro" value="dropdownSelect" id="pickEggRadio">Select Egg:</label>
+            <div class="custom-dropdown">
+              <div class="custom-dropdown-selected" data-value="eggs">
+                <img src="../images/Eggs/Overworld/Infinity_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                Infinity Egg
+              </div>
+              <div class="custom-dropdown-options">
+                <div data-value="Infinity">
+                  <img src="../images/Eggs/Overworld/Infinity_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Infinity Egg
+                </div>
+                <div data-value="Common">
+                  <img src="../images/Eggs/Overworld/Common_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Common Egg
+                </div>
+                <div data-value="Spotted">
+                  <img src="../images/Eggs/Overworld/Spotted_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Spotted Egg
+                </div>
+                <div data-value="Iceshard">
+                  <img src="../images/Eggs/Overworld/Iceshard_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Iceshard Egg
+                </div>
+                <div data-value="Spikey">
+                  <img src="../images/Eggs/Overworld/Spikey_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Spikey Egg
+                </div>
+                <div data-value="Magma">
+                  <img src="../images/Eggs/Overworld/Magma_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Magma Egg
+                </div>
+                <div data-value="Crystal">
+                  <img src="../images/Eggs/Overworld/Crystal_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Crystal Egg
+                </div>
+                <div data-value="Lunar">
+                  <img src="../images/Eggs/Overworld/Lunar_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Lunar Egg
+                </div>
+                <div data-value="Void">
+                  <img src="../images/Eggs/Overworld/Void_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Void Egg
+                </div>
+                <div data-value="Hell">
+                  <img src="../images/Eggs/Overworld/Hell_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Hell Egg
+                </div>
+                <div data-value="Nightmare">
+                  <img src="../images/Eggs/Overworld/Nightmare_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Nightmare Egg
+                </div>
+                <div data-value="Rainbow">
+                  <img src="../images/Eggs/Overworld/Rainbow_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Rainbow Egg
+                </div>
+                <div class="dropdown-divider">---Minigame Eggs---</div>
+                <div data-value="Showman">
+                  <img src="../images/Eggs/Minigame Paradise/Showman_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Showman Egg
+                </div>
+                <div data-value="Mining">
+                  <img src="../images/Eggs/Minigame Paradise/Mining_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Mining Egg
+                </div>
+                <div data-value="Cyber">
+                  <img src="../images/Eggs/Minigame Paradise/Cyber_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Cyber Egg
+                </div>
+                <div data-value="Neon">
+                  <img src="../images/Eggs/Minigame Paradise/Neon_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Neon Egg
+                </div>
+                <div data-value="Chance">
+                  <img src="../images/Eggs/Minigame Paradise/Chance_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  Chance Egg
+                </div>
+                <div class="dropdown-divider">---Other Eggs---</div>
+                <div data-value="Voidcrystal">
+                  <img src="../images/Eggs/Event/Voidcrystal_Egg.webp" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  VoidCrystal Egg
+                </div>
+                <div data-value="Event">
+                  <img src="../images/Eggs/Event/Light_Egg.png" style="width: 20px; height: 20px; margin-right: 3px; vertical-align: middle;">
+                  999m Egg
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="hiddenSelector" data-value="eggs" value="Infinity">
+        </div>
+        
+
+        <div class="mode-box">
+          <label class="radio-option"><input type="radio" name="macro" value="HyperDart">
+            <img src="../images/Chests & Shop/Multi_Darts.png" style="width: 4%; margin-right: 1%; margin-top: 1%;">HyperDarts
+          </label>
+        </div>
+
+        <div class="mode-box">
+          <label class="radio-option"><input type="checkbox" id="Premiumperk" name="macro">
+            <img src="../images/Other/Golden_Box.png" style="width: 4%; margin-right: 1%; margin-top: 1%;">
+            Premium Perks
+          </label>
+        </div>
+
+
+        <div class="mode-box">
+          <label class="radio-option"><input type="checkbox" id="Teams" name="macro">Smart Pet Teams</label>
+        </div>
+
+
+        <div class="mode-box">
+          <label class="radio-option"><input type="checkbox" id="BlowBubbles" name="macro">Blow Bubbles While Moving</label>
+        </div>
+
+
+        
+      </div>
+    </div>
+
+    <div id="macros" class="tab">
+      <button onclick="ahkButtonClick('FastHatch')">Fast Hatch</button>
+      <button onclick="ahkButtonClick('BubbleHatch')">Bubble Hatch</button>
+      <button onclick="ahkButtonClick('MysteryBox')">Mystery Box</button>
+      <button onclick="ahkButtonClick('BoardGame')">Board Game</button>
+      <button onclick="ahkButtonClick('Enchant')">High Roller Team</button>
+    </div>
+
+    <div id="competitive" class="tab">
+      <label><input type="checkbox" id="Competitive" disabled> Competitive Event - disabled</label>
+      <label><input type="checkbox" id="InfinityElixer" disabled> Infinity Elixer - disabled</label>
+    </div>
+
+    <hr>
+    <div class="footer">
+      <button onclick="ahkButtonClick('Start')">Start (F1)</button>
+      <button onclick="ahkButtonClick('Stop')">Stop (F2)</button>
+      <button onclick="ahkButtonClick('Pause')">Pause (F3)</button>
+      <button onclick="onSaveClick(this)">Save All</button>
+    </div>
+  </div>
+
+<script src="dropdown.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
