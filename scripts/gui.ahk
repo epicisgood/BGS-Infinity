@@ -445,7 +445,7 @@ CheckUpdate(req)
 
             if MsgBox(message, "Update Available", 0x40004 | 0x40 | 0x4 ) = "Yes" ; 0x4 = Yes/No, 0x40 = info icon, 0x1 = OK/Cancel default button
             {
-                Run "https://github.com/epicisgood/testing/releases/latest"
+                Run "https://github.com/epicisgood/BGS-Infinity/releases/latest"
             }
 
         }
@@ -453,4 +453,4 @@ CheckUpdate(req)
 }
 
 
-AsyncHttpRequest("GET", "https://api.github.com/repos/epicisgood/testing/releases/latest", CheckUpdate, Map("accept", "application/vnd.github+json"))
+AsyncHttpRequest("GET", "https://api.github.com/repos/epicisgood/BGS-Infinity/releases/latest", CheckUpdate, Map("accept", "application/vnd.github+json"))
