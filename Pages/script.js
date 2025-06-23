@@ -32,6 +32,7 @@
       GemGenie:           +document.getElementById('GemGenie').checked,
       RerollGemGenie:     +document.getElementById('RerollGemGenie').checked,
       SeasonQuests:       +document.getElementById('SeasonQuests').checked,
+      BubbleShrine:       +document.getElementById('BubbleShrine').checked,
       Reroll:              document.querySelector('input[name="shops"]:checked').value,
       Macro:               document.querySelector('input[name="macro"]:checked').value,
       InfinityElixer:     +document.getElementById('InfinityElixer').checked,
@@ -71,6 +72,7 @@
     document.getElementById('GemGenie').checked  = !!+s.GemGenie;
     document.getElementById('RerollGemGenie').checked  = !!+s.RerollGemGenie;
     document.getElementById('SeasonQuests').checked  = !!+s.SeasonQuests;
+    document.getElementById('BubbleShrine').checked  = !!+s.BubbleShrine;
     document.getElementById('Presents').checked     = !!+s.Presents;
     document.getElementById('BlowBubbles').checked    = !!+s.BlowBubbles;
     document.getElementById('Teams').checked    = !!+s.Teams;

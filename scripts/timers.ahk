@@ -13,6 +13,7 @@ LastDiceMerchant := nowUnix()
 LastPresents := nowUnix()
 LastBlackMarket := nowUnix()
 LastTravelingMerchant := nowUnix()
+LastBubbleShrine := nowUnix()
 
 
 ShopCooldown := 0.75
@@ -38,6 +39,7 @@ DiceMerchant := 7200 * ShopCooldown             ; 2 Hours
 TravelingMerchant := 28800 * ShopCooldown       ; 8 Hours
 
 
+BubbleShrine := 3620                    ; 1 Hour
 GemGenie := 3620                        ; 1 Hour
 SeasonQuests := 3620                    ; 1 Hour
 
@@ -46,8 +48,8 @@ Presents := 5400                        ; 1H 30 Minutes
 
 
 RewardChecker() {
-    global LastVoidChest, LastGiantChest, LastDiceMerchant, LastPresents, LastAlienShop, LastTicketChest, LastBlackMarket, LastGemGenie, LastInfinityChest, LastSeasonQuests, LastTravelingMerchant
-    global VoidChest, GiantChest, DiceMerchant, Presents, AlienShop, TicketChest, BlackMarket, GemGenie, TravelingMerchant, InfinityChest, SeasonQuests, TravelingMerchant
+    global LastVoidChest, LastGiantChest, LastDiceMerchant, LastPresents, LastAlienShop, LastTicketChest, LastBlackMarket, LastGemGenie, LastInfinityChest, LastSeasonQuests, LastTravelingMerchant, LastBubbleShrine
+    global VoidChest, GiantChest, DiceMerchant, Presents, AlienShop, TicketChest, BlackMarket, GemGenie, TravelingMerchant, InfinityChest, SeasonQuests, TravelingMerchant, BubbleShrine
 
     Rewardlist := []
 
@@ -86,6 +88,9 @@ RewardChecker() {
     if (currentTime - LastTravelingMerchant >= TravelingMerchant && RewardChecked("TravelingMerchant") && (A_WDay = 1 || A_WDay = 7)) {
         Rewardlist.Push("TravelingMerchant")
     }
+    if (currentTime - LastBubbleShrine >= BubbleShrine && RewardChecked("BubbleShrine") && (A_WDay = 1 || A_WDay = 7)) {
+        Rewardlist.Push("BubbleShrine")
+    }
     return Rewardlist
 }
 
@@ -98,7 +103,7 @@ RewardChecked(value) {
 
 ; Calls RewardChecker -> RewardChecked functions to see if we are able to run those things
 RewardInterupt() {
-    global LastVoidChest, LastGiantChest, LastDiceMerchant, LastPresents, LastAlienShop, LastTicketChest, LastBlackMarket, LastGemGenie, LastSeasonQuests, LastInfinityChest, LastTravelingMerchant
+    global LastVoidChest, LastGiantChest, LastDiceMerchant, LastPresents, LastAlienShop, LastTicketChest, LastBlackMarket, LastGemGenie, LastSeasonQuests, LastInfinityChest, LastTravelingMerchant, LastBubbleShrine
 
     variable := RewardChecker()
     if !(Macro == "Twilight" || Macro == "RobotFactory" || Macro == "CoinCurrency" || Macro == "TicketCurrency" || Macro == "HyperDart"){
@@ -230,6 +235,110 @@ RewardInterupt() {
             Sleep(300)
             Click
             LastSeasonQuests := nowUnix()
+        }
+        if (v = "BubbleShrine"){
+            PlayerStatus("Going to Bubble Shrine!", "0x57F287", , false)
+            BubbleShrinePathing()
+            Sleep(300)
+            MouseMove(WindowX + WindowWidth * (379 / 1366),WindowY + WindowHeight * (348 / 736) - 15)
+            Click
+            Sleep(300)
+            MouseMove(WindowX + WindowWidth * (724 / 1366),WindowY + WindowHeight * (322 / 736) - 15)
+            Loop 10 {
+                Send("{WheelUp}")
+                Sleep 50
+            }
+            Loop 10 {
+                Send("{WheelDown}")
+                Sleep 50
+            }
+            Loop 1 {
+                Send("{WheelUp}")
+                Sleep 50
+            }
+            Sleep(300)
+            pBMScreen := Gdip_BitmapFromScreen(windowX "|" windowY + 30 "|" windowWidth "|" windowHeight - 30)
+            if (Gdip_ImageSearch(pBMScreen, bitmaps["Coin1"], &OutputList,,, , , 25) = 1) {
+                coords := StrSplit(OutputList, ",")
+                MouseMove coords[1], coords[2]+60
+                Sleep 300
+                Click
+                Sleep 300
+                MouseMove(WindowX + WindowWidth * (648 / 1366),WindowY + WindowHeight * (426 / 736) - 15)
+                Sleep 300
+                Click
+                Send("6")
+                Sleep(300)
+                Send("4")
+                MouseMove(WindowX + WindowWidth * (624 / 1366),WindowY + WindowHeight * (473 / 736) - 15)
+                Sleep 300
+                Click
+                Sleep(300)
+                MouseMove(WindowX + WindowWidth * (617 / 1366),WindowY + WindowHeight * (526 / 736) - 15)
+                Sleep 300
+                Click
+            } else if (Gdip_ImageSearch(pBMScreen, bitmaps["Lucky1"], &OutputList,,, , , 25) = 1) {
+                coords := StrSplit(OutputList, ",")
+                MouseMove coords[1], coords[2]+60
+                Sleep 300
+                Click
+                Sleep 300
+                MouseMove(WindowX + WindowWidth * (648 / 1366),WindowY + WindowHeight * (426 / 736) - 15)
+                Sleep 300
+                Click
+                Send("6")
+                Sleep(300)
+                Send("4")
+                MouseMove(WindowX + WindowWidth * (624 / 1366),WindowY + WindowHeight * (473 / 736) - 15)
+                Sleep 300
+                Click
+                Sleep(300)
+                MouseMove(WindowX + WindowWidth * (617 / 1366),WindowY + WindowHeight * (526 / 736) - 15)
+                Sleep 300
+                Click
+            } else if (Gdip_ImageSearch(pBMScreen, bitmaps["Speed1"], &OutputList,,, , , 25) = 1) {
+                coords := StrSplit(OutputList, ",")
+                MouseMove coords[1], coords[2]+60
+                Sleep 300
+                Click
+                Sleep 300
+                MouseMove(WindowX + WindowWidth * (648 / 1366),WindowY + WindowHeight * (426 / 736) - 15)
+                Sleep 300
+                Click
+                Send("6")
+                Sleep(300)
+                Send("4")
+                MouseMove(WindowX + WindowWidth * (624 / 1366),WindowY + WindowHeight * (473 / 736) - 15)
+                Sleep 300
+                Click
+                Sleep(300)
+                MouseMove(WindowX + WindowWidth * (617 / 1366),WindowY + WindowHeight * (526 / 736) - 15)
+                Sleep 300
+                Click
+            } else if (Gdip_ImageSearch(pBMScreen, bitmaps["Mythic1"], &OutputList,,, , , 25) = 1) {
+                coords := StrSplit(OutputList, ",")
+                MouseMove coords[1], coords[2]+60
+                Sleep 300
+                Click
+                Sleep 300
+                MouseMove(WindowX + WindowWidth * (648 / 1366),WindowY + WindowHeight * (426 / 736) - 15)
+                Sleep 300
+                Click
+                Send("6")
+                Sleep(300)
+                Send("4")
+                MouseMove(WindowX + WindowWidth * (624 / 1366),WindowY + WindowHeight * (473 / 736) - 15)
+                Sleep 300
+                Click
+                Sleep(300)
+                MouseMove(WindowX + WindowWidth * (617 / 1366),WindowY + WindowHeight * (526 / 736) - 15)
+                Sleep 300
+                Click
+            }
+            Gdip_DisposeImage(pBMScreen)
+            PlayerStatus("Used Bubble Shrine!", "0x57F287", , false)
+
+            LastBubbleShrine := nowUnix()
         }
 
     } ; end of for loop braket

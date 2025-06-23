@@ -228,7 +228,7 @@ ClaimDaily(){
     hwnd := GetRobloxHWND()
     GetRobloxClientPos(hwnd)
     pBMScreen := Gdip_BitmapFromScreen(windowX "|" windowY + 30 "|" windowWidth "|" windowHeight - 30)
-    if (Gdip_ImageSearch(pBMScreen, bitmaps["ClaimDaily"], &OutputList,,, , , , 25, 2) = 1) {
+    if (Gdip_ImageSearch(pBMScreen, bitmaps["ClaimDaily"], &OutputList,,, , , 25, ,2) = 1) {
         coords := StrSplit(OutputList, ",")
         MouseMove coords[1], coords[2]+60
         Sleep 1000
@@ -1018,7 +1018,8 @@ GoldenDice(){
             break
         }
         if (A_Index == 4 * 10){
-            ChangeDice()
+            Gdip_DisposeImage(pBMScreen)
+            return
         }
         Gdip_DisposeImage(pBMScreen)
         Sleep(250)
@@ -1039,7 +1040,8 @@ GaintDice(){
             break
         }
         if (A_Index == 4 * 10){
-            ChangeDice()
+            Gdip_DisposeImage(pBMScreen)
+            return
         }
         Gdip_DisposeImage(pBMScreen)
         Sleep(250)
@@ -1061,7 +1063,8 @@ Dice(){
             break
         }
         if (A_Index == 4 * 10){
-            ChangeDice()
+            Gdip_DisposeImage(pBMScreen)
+            return
         }
         Gdip_DisposeImage(pBMScreen)
         Sleep(250)
@@ -1071,6 +1074,7 @@ Dice(){
 
 ChangeDice(){
     ; Goes to dice selection screen
+    MouseMove(WindowX + WindowWidth * (400 / 1366),WindowY + WindowHeight * (400 / 736))
     loop {
         hwnd := GetRobloxHWND()
         GetRobloxClientPos(hwnd)
@@ -1113,6 +1117,7 @@ UseDice(){
             break
         }
         if (A_Index == 4 * 10){
+            ChangeDice()
             GaintDice()
         }
         Gdip_DisposeImage(pBMScreen)
@@ -1143,6 +1148,7 @@ UseDice(){
             Click
         }
         if (A_Index == 20){
+            ChangeDice()
             GaintDice()
             Gdip_DisposeImage(pBMScreen)
             return
@@ -1333,15 +1339,10 @@ F3::
 {
 
 
-
-    ; ActivateRoblox()
-    ; ResizeRoblox()
-    ; Sleep(1000)
-    ; hwnd := GetRobloxHWND()
-    ; GetRobloxClientPos(hwnd)
-    ; pBMScreen := Gdip_BitmapFromScreen(windowX "|" windowY + 30 "|" windowWidth "|" windowHeight - 30)
-    ; Gdip_DisposeImage(pBMScreen)
-
-    PauseMacro()
+    ActivateRoblox()
+    ResizeRoblox()
+    hwnd := GetRobloxHWND()
+    GetRobloxClientPos(hwnd)
+    ; PauseMacro()
 
 }

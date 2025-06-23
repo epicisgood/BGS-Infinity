@@ -336,8 +336,8 @@ SendSettings(){
 	IniFile := A_ScriptDir . "\settings.ini"
 
     if (!FileExist(IniFile)) {
-        IniWrite("Insert Url", IniFile, "Settings", "url")
-        IniWrite("Insert UserId", IniFile, "Settings", "discordID")
+        IniWrite("", IniFile, "Settings", "url")
+        IniWrite("", IniFile, "Settings", "discordID")
         IniWrite("", IniFile, "Settings", "VipLink")
         IniWrite(1, IniFile, "Settings", "GiantChest")
         IniWrite(1, IniFile, "Settings", "VoidChest")
@@ -348,11 +348,12 @@ SendSettings(){
         IniWrite(1, IniFile, "Settings", "TicketChest")
         IniWrite(1, IniFile, "Settings", "BlackMarket")
         IniWrite(1, IniFile, "Settings", "TravelingMerchant")
-        IniWrite(1, IniFile, "Settings", "GemGenie")
+        IniWrite(0, IniFile, "Settings", "GemGenie")
         IniWrite(0, IniFile, "Settings", "RerollGemGenie")
         IniWrite(1, IniFile, "Settings", "SeasonQuests")
+        IniWrite(1, IniFile, "Settings", "BubbleShrine")
         IniWrite("BlackMarket", IniFile, "Settings", "Reroll")
-        IniWrite(0, IniFile, "Settings", "InfinityElixer")
+        IniWrite(0, IniFile, "Settings", "InfinityElixer") ; comp event not working rn
         IniWrite(0, IniFile, "Settings", "Premiumperk")
         IniWrite(0, IniFile, "Settings", "Teams")
         IniWrite(0, IniFile, "Settings", "BlowBubbles")
@@ -375,6 +376,7 @@ SendSettings(){
     , GemGenie:             IniRead(settingsFile, "Settings", "GemGenie")
     , RerollGemGenie:       IniRead(settingsFile, "Settings", "RerollGemGenie")
     , SeasonQuests:         IniRead(settingsFile, "Settings", "SeasonQuests")
+    , BubbleShrine:         IniRead(settingsFile, "Settings", "BubbleShrine")
     , Reroll:               IniRead(settingsFile, "Settings", "Reroll")
     , InfinityElixer:       IniRead(settingsFile, "Settings", "InfinityElixer")
     , Premiumperk:          IniRead(settingsFile, "Settings", "Premiumperk")

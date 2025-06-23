@@ -691,3 +691,22 @@ GemGeniePathing(){
     nm_endWalk()
     StopBlowingBubbles()
 }
+
+
+BubbleShrinePathing(){
+    Teleport(5)    
+    StartBlowingBubbles()
+    movement :=
+    (
+        '
+        nm_walk(1000,Wkey)
+        nm_walk(1300,Akey)
+
+        '
+    )
+    nm_createWalk(movement)
+    KeyWait "F14", "D T5 L"
+    KeyWait "F14", "T120 L"
+    nm_endWalk()
+    StopBlowingBubbles()
+}
