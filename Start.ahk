@@ -1344,6 +1344,6 @@ F3::
     ResizeRoblox()
     hwnd := GetRobloxHWND()
     GetRobloxClientPos(hwnd)
-    ; PauseMacro()
+    PauseMacro()
 
 }
