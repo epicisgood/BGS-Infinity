@@ -88,7 +88,7 @@ RewardChecker() {
     if (currentTime - LastTravelingMerchant >= TravelingMerchant && RewardChecked("TravelingMerchant") && (A_WDay = 1 || A_WDay = 7)) {
         Rewardlist.Push("TravelingMerchant")
     }
-    if (currentTime - LastBubbleShrine >= BubbleShrine && RewardChecked("BubbleShrine") && (A_WDay = 1 || A_WDay = 7)) {
+    if (currentTime - LastBubbleShrine >= BubbleShrine && RewardChecked("BubbleShrine")) {
         Rewardlist.Push("BubbleShrine")
     }
     return Rewardlist

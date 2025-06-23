@@ -456,3 +456,5 @@ CheckUpdate(req)
 
 
 AsyncHttpRequest("GET", "https://api.github.com/repos/epicisgood/BGS-Infinity/releases/latest", CheckUpdate, Map("accept", "application/vnd.github+json"))
+
+

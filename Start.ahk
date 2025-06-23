@@ -43,6 +43,7 @@ SlashKey := "vk6F" ; /
 SC_LShift:="sc02a" ; LShift
 
 
+
 #include %A_ScriptDir%\lib\
 
 #Include FormData.ahk
@@ -66,7 +67,7 @@ SC_LShift:="sc02a" ; LShift
 #Include paths.ahk
 
 
-#Include comp.ahk ; for competitve event paid only or ya
+; #Include comp.ahk ; for competitve event paid only or ya
 
 
 
