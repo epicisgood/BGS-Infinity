@@ -513,7 +513,7 @@ EventEgg(){
     movement :=
     (
         "
-        nm_walk(500,Akey,Skey)
+        nm_walk(2300,Akey,Skey)
         "
     )
     nm_createWalk(movement)
